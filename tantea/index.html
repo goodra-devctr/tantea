@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tantea | Compara precios entre tiendas</title>
+  <meta name="description" content="Mira cuánto cuesta un producto en cada tienda y compra donde sale más barato.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='2' y='4' width='24' height='5.5' rx='2.75' fill='%231a1545'/%3E%3Crect x='2' y='11.25' width='17' height='5.5' rx='2.75' fill='%231a1545'/%3E%3Crect x='2' y='18.5' width='10' height='5.5' rx='2.75' fill='%23ff6b5b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body data-root="" data-page="inicio">
+  <header id="site-header"></header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="titulo">
+      <div>
+        <h1 id="titulo">Mira cuánto cuesta en cada tienda.</h1>
+        <p class="lead">Buscamos el mismo producto en las tiendas de Colombia y te mostramos dónde sale más barato. Los precios van en pesos colombianos (COP).</p>
+
+        <form class="hero-search" role="search" action="pages/productos.html" method="get">
+          <label class="sr-only" for="q-hero">Buscar un producto</label>
+          <input id="q-hero" name="q" type="search" placeholder="Busca un producto" autocomplete="off" list="sugerencias">
+          <button class="btn" type="submit">Comparar</button>
+        </form>
+
+        <p class="hero-hints">
+          Prueba con
+          <a class="chip" href="pages/productos.html?q=LG">LG TV</a>
+          <a class="chip" href="pages/productos.html?q=Nintendo">Nintendo Switch 2</a>
+          <a class="chip" href="pages/productos.html?q=Peluche">Peluche Vaporeon</a>
+        </p>
+      </div>
+
+      <aside class="hero-card" id="hero-card" aria-label="Ejemplo de comparación"></aside>
+    </section>
+
+    <section class="section wrap" aria-labelledby="t-destacados">
+      <div class="section-head">
+        <div>
+          <h2 id="t-destacados">Productos destacados</h2>
+          <p>Los precios más bajos que encontramos hoy.</p>
+        </div>
+        <a class="link-more" href="pages/productos.html">Ver todos los productos</a>
+      </div>
+      <div class="grid" id="destacados"></div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="t-tiendas">
+      <div class="section-head">
+        <h2 id="t-tiendas">Tiendas que comparamos</h2>
+      </div>
+      <div class="stores" id="tiendas"></div>
+    </section>
+
+    <section class="section wrap" aria-label="Publicidad">
+      <div class="ad-slot">Espacio para tu anuncio</div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ayuda.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

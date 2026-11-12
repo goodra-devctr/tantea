@@ -1,0 +1,41 @@
+TANTEA · prototipo de comparador de precios
+==========================================
+
+CÓMO ABRIRLO
+  Haz doble clic en index.html. Se abre en tu navegador, sin servidor y sin internet.
+  (Si lo abres desde la vista previa de un editor o de una app, puede que no cargue
+  el CSS y el JS. Ábrelo siempre desde el navegador.)
+
+CÓMO LLEVARLO A OTRO LADO
+  Copia o comprime la carpeta completa. Todo está con rutas relativas, así que
+  funciona desde cualquier ubicación: un USB, el escritorio, otro computador.
+  Para publicarlo en la web basta con subir la carpeta a cualquier hosting
+  estático (Netlify, GitHub Pages, etc.).
+
+ESTRUCTURA
+  index.html              Inicio
+  pages/productos.html    Listado con búsqueda, categorías y orden
+  pages/producto.html     Detalle y comparación de tiendas (producto.html?id=lg-tv)
+  pages/carrito.html      Carrito agrupado por tienda
+  css/base.css            Colores, tipografía y reglas generales
+  css/components.css      Header, footer, botones, tarjetas, escalera de precios
+  css/pages.css           Estilos propios de cada página
+  js/data.js              Catálogo, tiendas y precios (de ejemplo)
+  js/app.js               Código compartido: carrito, header, footer, componentes
+  js/home.js, productos.js, producto.js, carrito.js, favoritos.js, pago.js   Un script por página
+  js/ayuda.js             Botón de ayuda flotante y su contenido por página
+  assets/img              Fotos de producto
+  assets/fonts            Fuentes (Inter), incluidas para que no dependa de internet
+  pages/favoritos.html    Productos guardados
+  pages/pago.html         Métodos de pago (tarjeta, Nequi, PSE)
+  pages/ayuda.html        Preguntas frecuentes
+  HEURISTICAS.md          Dónde se aplica cada heurística de Nielsen
+
+CAMBIOS FRECUENTES
+  Fotos:      reemplaza los archivos de assets/img (mismo nombre).
+              Las actuales son recortes de baja resolución de tu Figma.
+  Productos:  en js/data.js, copia un objeto de "productos" y cambia sus datos.
+  Colores:    css/base.css, bloque :root.
+  Precios:    son de ejemplo, no son ofertas reales.
+  Tiendas:    en js/data.js, "aceptan" indica qué métodos de pago acepta cada una.
+  Pagos:      es un prototipo. Nunca se guarda el número completo ni el código de seguridad.

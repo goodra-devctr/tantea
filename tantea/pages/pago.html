@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Métodos de pago | Tantea</title>
+  <meta name="description" content="Guarda cómo prefieres pagar y mira qué tiendas lo aceptan.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='2' y='4' width='24' height='5.5' rx='2.75' fill='%231a1545'/%3E%3Crect x='2' y='11.25' width='17' height='5.5' rx='2.75' fill='%231a1545'/%3E%3Crect x='2' y='18.5' width='10' height='5.5' rx='2.75' fill='%23ff6b5b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-root="../" data-page="pago">
+  <header id="site-header"></header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <h1>Métodos de pago</h1>
+      <p>Guarda cómo prefieres pagar y te mostramos qué tiendas lo aceptan. Tantea no cobra: pagas siempre en la tienda.</p>
+    </div>
+
+    <div class="pay-layout">
+
+      <section aria-labelledby="t-guardados">
+        <h2 id="t-guardados">Tus métodos</h2>
+        <ul class="pay-list" id="lista-pagos" aria-live="polite"></ul>
+      </section>
+
+      <section aria-labelledby="t-nuevo">
+        <h2 id="t-nuevo">Agregar un método</h2>
+
+        <form id="form-pago" class="pay-form" novalidate>
+          <div id="resumen-errores" class="form-errors" role="alert" tabindex="-1" hidden></div>
+
+          <fieldset class="seg">
+            <legend>Tipo de método</legend>
+            <label class="seg-opt"><input type="radio" name="tipo" value="tarjeta" checked><span>Tarjeta</span></label>
+            <label class="seg-opt"><input type="radio" name="tipo" value="nequi"><span>Nequi</span></label>
+            <label class="seg-opt"><input type="radio" name="tipo" value="pse"><span>PSE</span></label>
+          </fieldset>
+
+          <!-- Tarjeta -->
+          <div data-panel="tarjeta">
+            <div class="card-preview" aria-hidden="true">
+              <span class="cp-marca" id="vp-marca">Tarjeta</span>
+              <span class="cp-num num" id="vp-num">•••• •••• •••• ••••</span>
+              <span class="cp-row"><span id="vp-nom">NOMBRE APELLIDO</span><span class="num" id="vp-exp">MM/AA</span></span>
+            </div>
+
+            <div class="field" data-field="num">
+              <label for="num">Número de la tarjeta</label>
+              <div class="control">
+                <input id="num" name="num" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="23" aria-describedby="num-ayuda num-error">
+                <span class="marca-tag" id="marca-tag"></span>
+              </div>
+              <p class="field-hint" id="num-ayuda">Solo números. Los espacios se agregan solos.</p>
+              <p class="field-error" id="num-error" hidden></p>
+            </div>
+
+            <div class="field" data-field="nom">
+              <label for="nom">Nombre en la tarjeta</label>
+              <div class="control">
+                <input id="nom" name="nom" type="text" autocomplete="cc-name" placeholder="Como aparece en la tarjeta" maxlength="40" aria-describedby="nom-ayuda nom-error">
+              </div>
+              <p class="field-hint" id="nom-ayuda">Solo letras.</p>
+              <p class="field-error" id="nom-error" hidden></p>
+            </div>
+
+            <div class="field-row">
+              <div class="field" data-field="exp">
+                <label for="exp">Vencimiento<button type="button" class="tip-btn" data-tip="Está impreso en el frente de la tarjeta, como mes y año de dos dígitos." aria-label="Más información">?</button></label>
+                <div class="control">
+                  <input id="exp" name="exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" aria-describedby="exp-ayuda exp-error">
+                </div>
+                <p class="field-hint" id="exp-ayuda">Mes y año, por ejemplo 08/29.</p>
+                <p class="field-error" id="exp-error" hidden></p>
+              </div>
+
+              <div class="field" data-field="cvv">
+                <label for="cvv">Código de seguridad<button type="button" class="tip-btn" data-tip="Son 3 dígitos en el reverso de la tarjeta, o 4 en el frente si es American Express. Nunca lo guardamos." aria-label="Más información">?</button></label>
+                <div class="control">
+                  <input id="cvv" name="cvv" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="•••" maxlength="4" aria-describedby="cvv-ayuda cvv-error">
+                </div>
+                <p class="field-hint" id="cvv-ayuda">3 dígitos del reverso.</p>
+                <p class="field-error" id="cvv-error" hidden></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nequi -->
+          <div data-panel="nequi" hidden>
+            <div class="field" data-field="cel">
+              <label for="cel">Celular con Nequi<button type="button" class="tip-btn" data-tip="Usa el número con el que abriste tu cuenta Nequi. Solo guardamos los últimos 4 dígitos." aria-label="Más información">?</button></label>
+              <div class="control">
+                <input id="cel" name="cel" type="text" inputmode="tel" autocomplete="tel-national" placeholder="300 123 4567" maxlength="12" aria-describedby="cel-ayuda cel-error">
+              </div>
+              <p class="field-hint" id="cel-ayuda">10 dígitos. Los celulares en Colombia empiezan por 3.</p>
+              <p class="field-error" id="cel-error" hidden></p>
+            </div>
+          </div>
+
+          <!-- PSE -->
+          <div data-panel="pse" hidden>
+            <div class="field" data-field="banco">
+              <label for="banco">Tu banco<button type="button" class="tip-btn" data-tip="Pagas desde la página de tu banco. Tantea nunca ve tu clave ni tu usuario." aria-label="Más información">?</button></label>
+              <div class="control">
+                <select id="banco" name="banco" aria-describedby="banco-error">
+                  <option value="">Elige tu banco</option>
+                </select>
+              </div>
+              <p class="field-error" id="banco-error" hidden></p>
+            </div>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="pred" name="pred">
+            <span>Usar como método predeterminado<button type="button" class="tip-btn" data-tip="Es el que usamos en tu carrito para decirte qué tiendas lo aceptan." aria-label="Más información">?</button></span>
+          </label>
+
+          <button class="btn" type="submit" id="guardar">Guardar método</button>
+
+          <p class="field-hint note">Es un prototipo: puedes probar con una tarjeta de ejemplo, como 4242 4242 4242 4242, cualquier fecha futura y 3 dígitos. No guardamos el número completo ni el código de seguridad, solo la marca y los últimos 4 dígitos.</p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/ayuda.js"></script>
+  <script src="../js/pago.js"></script>
+</body>
+</html>
